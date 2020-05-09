@@ -1,0 +1,25 @@
+body {
+	background-position: top left !important;
+}
+
+.slider-img img {
+    background: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */   
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);   /* IE6 & 7 */ 
+}
+
+.pp_overlay {
+	height: 4000px !important;
+}
+
+#google-map {
+	position: relative;
+	height: 295px;
+	overflow: hidden;
+}
+
+#google-map iframe { 
+	position: absolute;
+	top:-5px; 
+	left: -5px;
+}

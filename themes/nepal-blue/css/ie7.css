@@ -1,0 +1,51 @@
+
+body {
+	background-position: top left !important;
+}
+
+#logo {
+	padding-bottom: 0;
+}
+
+#logo h1 {
+	margin-bottom: 7px;
+}
+
+.description h2 {
+	line-height: 40px;
+}
+
+.overlay {
+	left: 0;
+}
+
+.skills li {
+	height: 34px;
+	margin-bottom: 0;
+}
+
+.description h2 {
+	padding: 5px 0;
+}
+
+.slider-img img {
+    background: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */   
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);   /* IE6 & 7 */ 
+}
+
+.pp_overlay {
+	height: 4000px !important;
+}
+
+#google-map {
+	position: relative;
+	overflow: hidden;
+	height: 295px;
+}
+
+#google-map iframe { 
+	position: absolute;
+	top:-5px; 
+	left: -5px;
+}
