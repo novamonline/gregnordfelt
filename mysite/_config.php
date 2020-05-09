@@ -10,8 +10,9 @@ require_once 'conf/ConfigureFromEnv.php';
 
 // Set the site locale
 i18n::set_locale('en_US');
-FulltextSearchable::enable();
 
+// Search capability
+FulltextSearchable::enable();
 
 set_time_limit(0);
 

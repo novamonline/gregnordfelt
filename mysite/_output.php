@@ -2,13 +2,14 @@
 
 
 if (Director::isLive()) {
+    // minify assets
     Requirements::set_combined_files_enabled(true);
-}
 
-ob_start();
-register_shutdown_function(function(){
-    $buffer = ob_get_clean();
-    $regex = '%# Collapse ws everywhere but in blacklisted elements.
+    // minify HTML
+    ob_start();
+    register_shutdown_function(function () {
+        $buffer = ob_get_clean();
+        $regex = '%# Collapse ws everywhere but in blacklisted elements.
         (?>             # Match all whitespans other than single space.
             [^\S ]\s*     # Either one [\t\r\n\f\v] and zero or more ws,
         | \s{2,}        # or two or more consecutive-any-whitespace.
@@ -28,9 +29,9 @@ register_shutdown_function(function(){
             )             # End alternation group.
         )  # If we made it here, we are not in a blacklist tag.
         %ix';
-    $buffer =  preg_replace($regex, " ", $buffer);
-    $buffer =  preg_replace('/<!--(.*)-->/Uis', '', $buffer);
-    $buffer =  preg_replace('#\/\/\<\!\[CDATA\[(.*?)\/\/\]]\>#Uis', '$1', $buffer);
-    echo $buffer;
-});
+        $buffer =  preg_replace($regex, " ", $buffer);
+        $buffer =  preg_replace('/<!--(.*)-->/Uis', '', $buffer);
+        $buffer =  preg_replace('#\/\/\<\!\[CDATA\[(.*?)\/\/\]]\>#Uis', '$1', $buffer);
+        echo $buffer;
+    });
 }
