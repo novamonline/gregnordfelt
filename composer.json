@@ -37,6 +37,32 @@
     },
     "extra": {
         "installer-paths": {
+            "modules/{$name}": [
+                "lekoala/silverstripe-debugbar",
+                "undefinedoffset/sortablegridfield",
+                "ryanpotter/silverstripe-cms-theme",
+                "colymba/gridfield-bulk-editing-tools",
+                "unclecheese/mock-dataobjects",
+                "unclecheese/betterbuttons",
+                "nathancox/sortableuploadfield",
+                "symbiote/silverstripe-multivaluefield",
+                "silverstripe/newsletter",
+                "markguinn/silverstripe-email-helpers",
+                "lekoala/silverstripe-sparkpost",
+                "sheadawson/silverstripe-select2",
+                "silverstripe/recaptcha",
+                "innoweb/silverstripe-social-share",
+                "heyday/silverstripe-optimisedimage",
+
+                "exadium/extra-attributes-field",
+                "silverstripe/gridfieldajaxrefresh",
+                "silverstripe-australia/gridfieldextensions",
+                "symbiote/silverstripe-gridfieldextensions",
+                "betterbrief/silverstripe-googlemapfield",
+                "silverstripe/messagequeue",
+                "innoweb/silverstripe-social-metadata",
+                "silverstripe/spamprotection"
+            ]
         }
     },
     "config": {
