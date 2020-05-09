@@ -1,0 +1,6 @@
+/tests/phpcs export-ignore
+/tests/travis export-ignore
+/tests/unit export-ignore
+/docs export-ignore
+/.gitignore export-ignore
+/.travis.yml export-ignore

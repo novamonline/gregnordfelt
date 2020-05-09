@@ -1,0 +1,35 @@
+{
+    "name": "lekoala/silverstripe-sparkpost",
+    "description": "SparkPost integration for SilverStripe CMS",
+    "type": "silverstripe-module",
+    "keywords": [
+        "silverstripe",
+        "sparkpsot",
+        "module",
+        "cms"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LeKoala",
+            "email": "thomas@lekoala.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.8",
+        "silverstripe/framework": "~3.1",
+        "symbiote/silverstripe-gridfieldextensions": "~1.4",
+        "composer/ca-bundle": "*"
+    },
+    "extra": {
+        "installer-name": "sparkpost"
+    },
+    "suggest": {
+        "pelago/emogrifier": "Inline styles for your emails",
+        "lekoala/silverstripe-foundation-emails": "Use Foundation Emails as a base style for your emails",
+        "lekoala/silverstripe-email-templates": "Email templates editables from the cms"
+    },
+    "support": {
+        "issues": "https://github.com/lekoala/silverstripe-sparkpost/issues"
+    }
+}

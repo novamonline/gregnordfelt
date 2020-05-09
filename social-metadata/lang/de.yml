@@ -1,0 +1,15 @@
+de:
+  ArticleAuthorRole:
+    FACEBOOKPROFILE: 'Facebook Profil (komplette URL)'
+    GOOGLEPROFILE: 'Google+ Profil (komplette URL)'
+    TWITTERHANDLE: 'Twitter Account (@xyz)'
+  SocialMetaConfigExtension:
+    AddGoogleMapsAPIKey: 'Bitte Google Maps API key hinzufügen und Konfiguration speichern um Koordinaten setzen zu können.'
+    FACEBOOK: Facebook
+    FACEBOOKADMINIDS: 'Facebook Admin IDs'
+    FACEBOOKAPPID: 'Facebook App ID'
+    FACEBOOKPAGE: 'Facebook Seite (komplette URL)'
+    MetadataTab: 'Social Metadaten'
+    MicroData: 'Micro Data'
+    TWITTER: Twitter
+    TWITTERHANDLE: 'Twitter Account (@xyz)'
