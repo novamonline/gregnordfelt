@@ -15,7 +15,7 @@
  */
 
 // This is the URL of the script that everything must be viewed with.
-define('BASE_SCRIPT_URL', 'index.php/');
+define('BASE_SCRIPT_URL', '');
 
 $ruLen = strlen($_SERVER['REQUEST_URI']);
 $snLen = strlen($_SERVER['SCRIPT_NAME']);
@@ -37,7 +37,7 @@ if ($isIIS) {
         $url = strtok($url, '?');
     }
 
-// Apache will populate the server variables this way
+    // Apache will populate the server variables this way
 } else {
     if ($ruLen > $snLen && substr($_SERVER['REQUEST_URI'], 0, $snLen+1) == ($_SERVER['SCRIPT_NAME'] . '/')) {
         $url = substr($_SERVER['REQUEST_URI'], $snLen+1);

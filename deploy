@@ -1,0 +1,87 @@
+#!/bin/env php
+<?php
+
+$env = $argv[1] ?? 'local';
+$iflags = "";
+$port = mt_rand(1000, 9999);
+
+if ($env == 'prod' || $env == "qa") {
+    $iflags = " --no-dev";
+}
+
+$cleanDeploy = (isset($argv[3]) && $argv[3] == 'clean')
+         || (isset($argv[2]) && $argv[2] == 'clean');
+
+if ($cleanDeploy) {
+    shell_exec("git clean -fdX ./");
+}
+shell_exec("composer install $iflags");
+if ($cleanDeploy) {
+    shell_exec("cp _ss_environment.php.$env _ss_environment.php");
+}
+
+// //change Object to SS_Object
+// $object_to_ss_object_files = array_filter([
+//   realpath(__DIR__."/modules/gallery/_config.php"),
+//   realpath(__DIR__."/modules/debugbar/code/DebugBar.php"),
+//   realpath(__DIR__."/modules/messagequeue/tests/MessageQueueTest.php"),
+// ]);
+
+$updateSSObjectClass = function ($dir) use (&$updateSSObjectClass) {
+    foreach (glob($dir . DIRECTORY_SEPARATOR . "*") as $path) {
+        if (is_dir($path)) {
+            $updateSSObjectClass($path);
+        }
+        if (!file_exists($path) || $path == "." || $path == "..") {
+            continue;
+        }
+        if (pathinfo($path, PATHINFO_EXTENSION) != "php") {
+            continue;
+        }
+        print_r("Updating 'Object' to 'SS_Object' in $path...\r\n");
+        $data = file_get_contents($path);
+        $data = preg_replace("#\b(Object)\b#", "SS_Object", $data);
+        file_put_contents($path, $data);
+    }
+};
+
+// Gallery images 150pxX150px;
+$gallerPage = __DIR__. '/modules/gallery/templates/Layout/GalleryPage.ss';
+if (realpath($gallerPage)) {
+    print_r("\r\nUpdating $gallerPage...\r\n");
+    $gdata = file_get_contents(realpath($gallerPage));
+    $gdata = str_replace('$SetSize(250,250)', '$FillMax(150,150)', $gdata);
+    file_put_contents($gallerPage, $gdata);
+}
+
+//Replace asset files to account for modules folder
+//find ./ -type f -exec sed -i -e "s/$1/$2/g" {} \;
+$modules_with_templates = array_filter([
+  realpath(__DIR__ ."/modules/"),
+]);
+$updateModulesPath = function ($dir) use (&$updateModulesPath) {
+    foreach (glob($dir . DIRECTORY_SEPARATOR . "*") as $path) {
+        if (is_dir($path)) {
+            $updateModulesPath($path);
+        }
+        if (!file_exists($path) || $path == "." || $path == "..") {
+            continue;
+        }
+        if (pathinfo($path, PATHINFO_EXTENSION) != "php") {
+            continue;
+        }
+        print_r("Modifying $path...\r\n");
+        $data = file_get_contents($path);
+        $data = preg_replace("#(Requirements::(css|javascript))\('(modules\/|)#", "$1('modules/", $data);
+        file_put_contents($path, $data);
+    }
+};
+foreach ($modules_with_templates as $dir) {
+    $updateModulesPath($dir);
+    $updateSSObjectClass($dir);
+}
+
+if (isset($argv[2]) && $argv[2] == 'serve') {
+    shell_exec("start \"\" http://localhost:$port");
+    shell_exec("start php -S localhost:$port");
+}
